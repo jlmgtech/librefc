@@ -19,6 +19,9 @@ using \fBretain\fP(void*) and \fBrelease\fP(void*).
 \fIsize\fP is the number of bytes to allocate for the memory object. \fIfinalizer\fP is
 a function (or NULL) that will be run on the object before it is collected.
 \fIdestructor\fP is the collection function, which will default to \fBfree\fP() if NULL.
+.SH MACROS
+You may opt to use \fBNEW\fP(type, \fIfinalizer\fP, \fIdestructor\fP), which performs same
+action as rc_alloc, but infers the \fIsize\fP automatically from the type.
 .SH WARNINGS
 Do not attempt to \fBfree\fP(3) a pointer returned from rc_alloc. Instead, call
 \fBrelease\fP(3).

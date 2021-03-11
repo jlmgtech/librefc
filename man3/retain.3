@@ -16,6 +16,8 @@ void \fBretain\fP(void* \fIptr\fP);
 .SH WARNINGS
 Do not attempt to \fBfree\fP(3) a pointer returned from rc_alloc. Instead, call
 \fBrelease\fP(3).
+.SH MACROS
+You may use \fBHOLD\fP(\fIptr\fP) instead of retain.
 .SH SEE ALSO
 \fBrc_alloc\fP(3), \fBrelease\fP(3), \fBset_destructor\fP(3), \fBset_finalizer\fP(3) 
 .SH AUTHORS

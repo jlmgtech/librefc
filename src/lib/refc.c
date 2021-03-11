@@ -11,6 +11,10 @@
  * size is the number of bytes to allocate for the memory object. finalizer is
  * a function (or NULL) that will be run on the object before it is collected.
  * destructor is the collection function, which will default to free() if NULL.
+ * 
+ * MACROS
+ * You may opt to use NEW(type, finalizer, destructor), which performs same
+ * action as rc_alloc, but infers the size automatically from the type.
  *
  * WARNINGS
  * Do not attempt to free(3) a pointer returned from rc_alloc. Instead, call
@@ -39,6 +43,9 @@ void* rc_alloc(size_t size, finalizer_t finalizer, destructor_t destructor)
  * Do not attempt to free(3) a pointer returned from rc_alloc. Instead, call
  * release(3).
  *
+ * MACROS
+ * You may use HOLD(ptr) instead of retain.
+ *
  * SEE ALSO
  * rc_alloc(3), release(3), set_destructor(3), set_finalizer(3) 
  *
@@ -62,6 +69,9 @@ void retain(void* ptr)
  * time you retain(3) an object, you must call release on it, plus one
  * additional time to reach 0 (since the count starts at 1 when allocated by
  * rc_alloc(3)).
+ *
+ * MACROS
+ * You may use DONE(ptr) in place of release.
  *
  * SEE ALSO
  * rc_alloc(3), retain(3), set_destructor(3), set_finalizer(3) 
